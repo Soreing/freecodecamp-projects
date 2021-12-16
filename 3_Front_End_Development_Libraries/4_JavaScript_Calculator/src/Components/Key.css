@@ -1,0 +1,51 @@
+.disable-select {
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+  }
+
+.key-button{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-family: Share Tech Mono;
+    font-size: 30px;
+    color: white;
+    
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;   
+    box-sizing: content-box;
+}
+  
+  
+.key-button:hover{
+    border: 1px solid #ffffe6;
+    transform: scale(1.01);
+    
+    color: black;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;   
+    box-sizing: border-box;
+}
+
+.operation{
+    background-color: #999999;
+    border: 1px solid #999999;
+}
+  
+.value{
+    background-color: #595959;
+    border: 1px solid #595959;
+}
+  
+.clear{
+    background-color: #990000;
+    border: 1px solid #990000;
+}
+  
+.equals{
+    background-color: #003399;
+    border: 1px solid #003399;
+}
