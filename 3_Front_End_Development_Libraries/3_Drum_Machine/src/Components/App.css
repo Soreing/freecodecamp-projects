@@ -1,0 +1,23 @@
+#drum-machine{
+  width: max-content;
+}
+
+#display-div{
+  width: 100%;
+  height: 50px;
+  background-color: grey;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#display{
+  width: 70%;
+  height: 1.2em;
+  
+  background-color: black;
+  color: lime;
+  text-align: center;
+  font-family: Share Tech Mono;
+}

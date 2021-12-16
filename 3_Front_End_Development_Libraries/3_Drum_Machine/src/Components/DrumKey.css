@@ -1,0 +1,11 @@
+.drum-key{
+    width:  100px;
+    height: 100px;
+    
+    background-color: lightgrey;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.19);
+    
+    outline: none;
+    border:  none;
+    border-radius: 5px;
+}

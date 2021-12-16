@@ -1,0 +1,12 @@
+#keyboard{
+    width: max-content;
+    background-color: darkgray;
+    padding: 20px 20px 20px 20px;
+    
+    display: grid;
+    grid-gap: 20px 20px;
+    grid-template-areas:
+        'Q W E'
+        'A S D'
+        'Z X C';
+}
