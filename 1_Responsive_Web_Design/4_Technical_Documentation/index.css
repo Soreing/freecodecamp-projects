@@ -1,0 +1,111 @@
+body{
+    background-color: #0D1117;
+    color: hsl(0, 0%, 85%);
+    font-family: Helvetica;
+    display: grid;
+    grid-template-columns: 300px auto;
+    margin-top: 0px;
+  }
+  
+  nav{
+    width: 300px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    align-self: start;
+    position: sticky;
+    top: 0px;
+    
+    border: 1px solid;
+    border-color: hsl(0, 0%, 25%);
+  }
+  
+  #links{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .nav-header{
+    font-size: 30px;
+    padding: 15px 0px 15px 0px;
+    text-align: center;
+  }
+  
+  .nav-link{
+    color: hsl(0, 0%, 85%);
+    padding: 10px 0px 10px 30px;
+    text-decoration: none;
+    
+    border: 1px solid;
+    border-color: hsl(0, 0%, 25%);
+  }
+  
+  main{
+    width: 50%;
+    min-width: 700px;
+    margin: auto;
+    padding: 0px 20px 0px 20px;
+    border:  1px solid;
+    border-radius: 10px;
+    border-color: hsl(0, 0%, 25%);
+    justify-self: center;
+  }
+  
+  .topic-header{
+    font-size: 30px;
+    margin-top: 40px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid;
+    border-color: hsl(0, 0%, 25%);
+  }
+  
+  code{
+    white-space: pre-wrap;
+  }
+  
+  .code-block{
+    width: 100%-40px;
+    background-color: #161B22;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+  }
+  
+  @media (max-width: 1200px){
+    body{
+      grid-template-columns: auto;
+    }
+    
+    nav{
+      width: 50%;
+      min-width: 700px;
+      position: static;
+      padding: 0px 20px 0px 20px;
+      border-radius: 10px;
+    }
+    
+    .nav-header{
+      width: 100%;
+      text-align: left;
+      padding-left: 30px;
+      width: 100%;
+    }
+    
+    #links{
+      flex-direction: row;
+      align-items: stretch;
+      padding: 20px 0px 10px 0px;
+      
+      border-top: 1px solid;
+      border-color: hsl(0, 0%, 25%);
+    }
+    
+    .nav-link{
+      font-size: 14px;
+      padding: 0px 5px 0px 5px;
+      border: 0px solid;
+      border-left: 1px solid;
+      border-right: 1px solid;
+      border-color: hsl(0, 0%, 25%);
+    }
+  }

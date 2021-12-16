@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>4_Technical_Documentation</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <header class="nav-header">rpc-service-cpp</header>
+      <div id="links">
+        <a class="nav-link" href="#Description">Description</a>
+        <a class="nav-link" href="#Installation">Installation</a>
+        <a class="nav-link" href="#Usage">Usage</a>
+        <a class="nav-link" href="#Creating_a_Server">Creating a Server</a>
+        <a class="nav-link" href="#Creating_a_Client">Creating a Client</a>
+        <a class="nav-link" href="#Working_with_Abstract_Data_Types">Working with Abstract Data Types</a>
+      </div>
+    </nav>
+      
+    <main id="main-doc">
+      
+      <section id="Description" class="main-section">
+        <header class="topic-header">Description</header>
+        <p>rpc-service-cpp is a Remote Procedure Call library for C++. You can create a server that hosts functions with their implementation, and/or make a client that contacts the server to call a function and wait for a return value. Arguments for the functions get serialized to bytes and sent with the request.</p>
+      </section>
+      
+      <section id="Installation" class="main-section">
+        <header class="topic-header">Installation</header>
+        <p>Add the folder rpc-service from /include in your include path. If you want to compile the library from source, include XSocket.cpp and RPCService.cpp from the /src folder. Alternatively, you can compile the source code to a static library and include it that way.</p>
+      </section>
+      
+      <section id="Usage" class="main-section">
+        <header class="topic-header">Usage</header>
+        <p>The basic usage of the library is included in DEMO_Server.cpp to create an RPC Server and DEMO_Client.cpp to create a Client.</p>
+      </section>
+      
+      <section id="Creating_a_Server" class="main-section">
+        <header class="topic-header">Creating a Server</header>
+        <p>You will need the following headers to create an RPC Server</p>
+        <div class="code-block">
+<code>#include &lt;rpc-service/RPCService.h&gt;
+#include &lt;rpc-service/RPCFunction.h&gt;</code>
+        </div>
+        <p>To create a server that hosts specific functions, first you will need to create a list of functions with a list of parameters types using MakeFunction().<p>
+        <div class="code-block">
+<code>auto RPCs = std::make_tuple(
+MakeFunction("Function", Type&lt;void&gt;(), NoFunction, std::tuple&lt;&gt;()),
+MakeFunction("Divide", Type&lt;float&gt;(), Divide, std::tuple&lt;Type&lt;int&gt;, Type&lt;int&gt; &gt;()),
+MakeFunction("TestFunction", Type&lt;int&gt;(), TestFunction, std::tuple&lt;Type&lt;int&gt;, Type&lt;int&gt;, Type&lt;ADT&gt; &gt;())
+);</code>
+        </div>
+        <p>The 1st parameter is the name ID of the function, the 2nd parameter is the return type, 3rd is the function pointer for the implementation, then the 4th parameter is a tuple of types for parameters to the function call.</p>
+          <p>After the list of functions is created, you need to create an interface to and RPC Service, then start hosting the service online on a port number.</p>
+        <div class="code-block">
+<code>auto service = MakeIRPCService(RPCs);
+
+// Service running on port 7971 for example
+if(service.Start(7971))
+{    while (true) {}
+}</code>
+        </div>
+      </section>
+      
+      <section id="Creating_a_Client" class="main-section">
+        <header class="topic-header">Creating a Client</header>
+        <p>You will need the following headers to create an RPC Client</p>
+        <div class="code-block">
+          <code>#include &lt;rpc-service/RPCService.h&gt;</code>
+        </div>
+        <p>To create a client that contacts the RPC Server, you simply need to call a function with the correct parameters</p>
+        <div class="code-block">
+<code>float fresult;
+if(RPC("127.0.0.1", 7971, fresult, "Divide", 3, 6))
+{    cout &lt;&lt; fresult;
+}</code>
+        </div>
+        <p>The RCP() function returns true if the call was successful, false if it was not. Parameters are:</p>
+        <ol>
+          <li>IP address of the RPC Server</li>
+          <li>Port number of the RPC Server</li>
+          <li>Return value (Skip if the function has no return)</li>
+          <li>Name ID of the requested function</li>
+          <li>Any additional parameters will be converted to bytes and sent with the request as data for calling the function with.</li>
+        </ol>
+        
+        <p>More Examples:</p>
+        <div class="code-block">
+<code>// Function with no return value
+if(RPC("127.0.0.1", 7971, "Function"))
+{    cout &lt;&lt; "Call Succesful!\n\n";
+}
+    
+// Function with an abstract data type as a parameter
+int iresult;
+if (RPC("127.0.0.1", 7971, iresult, "TestFunction", 1, 2, ADT(123, 456.789f)))
+{   cout &lt;&lt; iresult;
+}</code>
+        </div>
+      </section>
+      
+      <section id="Working_with_Abstract_Data_Types" class="main-section">
+        <header class="topic-header">Working with Abstract Data Types</header>
+        <p>You can use classes and structures as arguemnts in the RPC calls only if both the server and the client defines them, and implement the required functions. Both functions have been defined for common C++ types.</p>
+        <p>The Marshall() function converts the data type to an array of bytes as a string, while the Unmarshall() function converts a string of bytes to an object.</p>
+        <div class="code-block">
+<code>str Marshall(ADT raw)
+{   return str((char*)&raw, sizeof(raw));
+}
+ADT Unmarshall(cstr data, int* size, Type&lt;ADT&gt;)
+{    if (size != NULL) { *size = sizeof(ADT); } return *(ADT*)data;
+}</code>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
