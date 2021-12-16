@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>2_Survey_Form</title>
+      <link rel="stylesheet" href="index.css">
+  </head>
+
+  <body>
+    <div id="main">
+      <h1 id="title" class="title-format"> Discord Server Survey Form </h1>
+      <p id="description" class="description-format"> Thank you for taking the survey and helping the community</p>
+    
+      <form id= "survey-form">
+        <div class="input-style">
+          <label id="name-label" class="label-format" for="name">Name<label>
+          <input id="name" class="field-style" type="text" placeholder="Enter your name" required>
+        </div>
+    
+        <div class="input-style">
+          <label id="email-label" class="label-format" for="email">Email<label>
+          <input id="email" class="field-style" type="email" placeholder="Enter your email" required>
+        </div>
+    
+        <div class="input-style">
+          <label id="number-label" class="label-format" for="number">How long have you been active? (Months)<label>
+          <input id="number" class="field-style" type="number" placeholder="Months" min="0" max="27" required>
+        </div>
+    
+        <div class="input-style">
+          <label for="dropdown" class="label-format">Who is your favorite Moderator?<label>
+          <select id="dropdown" class="field-style" name="moderator">
+            <option value="498948020918812677" selected> Soreing</option>
+            <option value="111782598199513088"> spoofy</option>
+            <option value="179535284155842560"> Heh</option>
+            <option value="265889000969994241"> Rocky</option>
+            <option value="416905844488404992"> HotCool</option>
+            <option value="395638945247002625"> CadillacJack~</option>
+          </select>
+        </div>
+    
+        <div class="input-style">
+          <label for="satistaction" class="label-format">How satisfied are you with the server?<label>
+            <label for="very-satisfied"> <input type="radio" name="satistaction" value="1"></input> Very Satisfied </label>
+            <label for="fairly-satisfied"> <input type="radio" name="satistaction" value="2"></input> Fairly Satisfied </label>
+            <label for="neutral"> <input type="radio" name="satistaction" value="3"></input> Neutral </label>
+            <label for="fairly-unsatisfied"> <input type="radio" name="satistaction" value="4"></input> Fairly Unsatisfied </label>
+            <label for="very-unsatisfied"> <input type="radio" name="satistaction" value="5"></input> Very Unsatisfied </label>
+        </div>
+    
+        <div class="input-style">
+          <label for="channels" class="label-format">What channels do you usually talk in?<label>
+            <label for="general"> <input type="checkbox" name="channels" value="1"></input> general</label>
+            <label for="subject-channels"> <input type="checkbox" name="channels" value="2"></input> subject-channels</label>
+            <label for="anime"> <input type="checkbox" name="channels" value="3"></input> anime</label>
+            <label for="games"> <input type="checkbox" name="channels" value="4"></input> games</label>
+            <label for="pets"> <input type="checkbox" name="channels" value="5"></input> pets</label>
+            <label for="v-tubers"> <input type="checkbox" name="channels" value="6"></input> v-tubers</label>
+            <label for="bot-spam"> <input type="checkbox" name="channels" value="7"></input> bot-spam</label>
+            <label for="books"> <input type="checkbox" name="channels" value="8"></input> books</label>
+            <label for="memes"> <input type="checkbox" name="channels" value="9"></input> memes</label>
+            <label for="movies-series"> <input type="checkbox" name="channels" value="10"></input> movies-series</label>
+            <label for="music"> <input type="checkbox" name="channels" value="11"></input> music</label>
+            <label for="food"> <input type="checkbox" name="channels" value="12"></input> food</label>
+        </div>
+    
+        <div class="input-style">
+          <label for="something" class="label-format">Comments<label>
+          <textarea id="comments" type="text" name="textarea"> </textarea>
+        </div>
+    
+        <button id="submit" type="submit"> Submit </button>
+    
+      </form>
+    </div>
+  </body>
